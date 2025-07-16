@@ -1,3 +1,6 @@
+const { UwUifyTray } = await load("tray.js");
+const { join } = util;
+
 class UwUifyProcess extends Process {
   constructor(handler, pid, parentPid) {
     super(handler, pid, parentPid);
@@ -9,6 +12,22 @@ class UwUifyProcess extends Process {
     this.env.set("uwuify_pid", this.pid);
     this.observer = new MutationObserver((m) => this.processMutations(m));
     this.observer.observe(document.body, { childList: true, subtree: true });
+
+    const shell = this.handler.getProcess(+env.get("shell_pid"));
+    const icon = await this.fs.direct(join(workingDirectory, "icon.png"));
+
+    shell.trayHost.createTrayIcon(
+      this.pid,
+      "UwUifyTray",
+      {
+        icon,
+        popup: {
+          width: 150,
+          height: 40,
+        },
+      },
+      UwUifyTray
+    );
   }
 
   async stop() {

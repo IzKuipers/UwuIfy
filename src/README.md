@@ -4,8 +4,7 @@ This application dynamically transforms all text in ArcOS to uwu'ified counterpa
 
 ## Known problems
 
-- There's no easy way to terminate the application, because it's a regular process, not an app. Either restart ArcOS or kill `UwuIfyProcess` using Process Manager.
-- When the process does end, I can't guarantee that the process can reliably revert all uwuified strings back to their original states.
+- When the process ends, I can't guarantee that the process can reliably revert all uwuified strings back to their original states.
 
 ## License
 
