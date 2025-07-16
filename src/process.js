@@ -2,6 +2,12 @@ const { UwUifyTray } = await load("tray.js");
 const { join } = util;
 
 class UwUifyProcess extends Process {
+  app = {
+    data: {
+      id: "sophie_uwu",
+    },
+  }; // Polyfill this to make ArcOS see this regular process as the app's runtime
+
   constructor(handler, pid, parentPid) {
     super(handler, pid, parentPid);
   }
