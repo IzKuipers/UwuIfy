@@ -28,6 +28,8 @@ class UwUifyProcess extends Process {
       },
       UwUifyTray
     );
+
+    this.uwuifyAll();
   }
 
   async stop() {
